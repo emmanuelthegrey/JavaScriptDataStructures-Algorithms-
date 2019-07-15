@@ -41,18 +41,30 @@
 //     }
 //     return max;
 // }
-var maxSubArray = function(nums) {
-    if (nums.length === 1) return nums[0];
-   var runningMax = nums[0];
-    var maxAtCurrentIndex = nums[0];
+//var maxSubArray = function(nums) {
+//     if (nums.length === 1) return nums[0];
+//    var runningMax = nums[0];
+//     var maxAtCurrentIndex = nums[0];
   
-    for(var i = 1; i < nums.length;i++){
+//     for(var i = 1; i < nums.length;i++){
         
-        maxAtCurrentIndex = Math.max(maxAtCurrentIndex + nums[i], nums[i]);
+//         maxAtCurrentIndex = Math.max(maxAtCurrentIndex + nums[i], nums[i]);
         
-        runningMax = Math.max(runningMax, maxAtCurrentIndex)
-    }
-    return runningMax
-}
+//         runningMax = Math.max(runningMax, maxAtCurrentIndex)
+//     }
+//     return runningMax
+// }
 
-console.log(maxSubArray([5,5,-10,5,6]));
+// console.log(maxSubArray([5,5,-10,5,6]));
+
+var myArray = ['1', 'a', '6', '8'];
+
+myArray.push('9');
+
+console.log(myArray);
+
+myArray.unshift('0');
+
+console.log(myArray);
+
+myArray.sh
