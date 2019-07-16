@@ -103,7 +103,7 @@ class LinkedList{
             return this.head;
         }
 
-       let first = this.head;
+       let first = this.head; 
        this.tail = this.head;
        let iteratingNode = first.next;
        while(iteratingNode){
