@@ -97,12 +97,40 @@ class LinkedList{
      return this.printList();
         
     }
+//return when you relearn recursion this seems like a good canadite for it.
+    reverse(){
+        if(!this.head.next){
+            return this.head;
+        }
+
+       let first = this.head;
+       this.tail = this.head;
+       let iteratingNode = first.next;
+       while(iteratingNode){
+           const temp = iteratingNode.next;
+           iteratingNode.next = first;
+           first = iteratingNode;
+           iteratingNode = temp;
+       }
+       this.head.next = null;
+       this.head = first;
+       return this;
+
+
+
+       
+    }
 }
+
+
 
 MyLinkedList = new LinkedList(1);
 
 MyLinkedList.append(2);
 
 MyLinkedList.append(3);
+MyLinkedList.append(4);
+MyLinkedList.append(5);
 MyLinkedList.printList();
-MyLinkedList.remove(0);
+MyLinkedList.reverse();
+MyLinkedList.printList();
