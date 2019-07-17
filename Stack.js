@@ -12,7 +12,7 @@ class Node{
             this.length = 0;
         }
         peek(){
-
+            return this.top;
         }
         push(value){
             let newNode = new Node(value);
@@ -39,4 +39,5 @@ class Node{
     myStack.push("Udemy");
     myStack.push("Youtube");
     myStack.push("Google");
+    console.log(myStack.peek().value);
     
