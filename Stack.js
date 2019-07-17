@@ -19,7 +19,6 @@ class Stack {
         if (this.length === 0) {
             this.top = newNode;
             this.bottom = newNode;
-            this.top.next = this.bottom;
         } else {
             newNode.next = this.top;
             this.top = newNode;
@@ -33,9 +32,16 @@ class Stack {
             var nodeToReturn = new Node(this.top.value);
             this.top = this.top.next;
             this.length--;
-            return nodeToReturn;
+            
+        }else
+        {
+            return null;
         }
-        return null;
+        
+        if(this.length === 0){
+            this.bottom = null;
+        }
+        return nodeToReturn;
     }
     isEmpty() {
         if (this.length == 0) return true;
@@ -44,12 +50,17 @@ class Stack {
 }
 
 const myStack = new Stack();
-console.log(myStack.isEmpty());
+// console.log(myStack.isEmpty());
 myStack.push("Udemy");
-myStack.push("Youtube");
-myStack.push("Google");
-console.log(myStack.isEmpty());
-console.log(myStack.peek().value);
-console.log(myStack.pop().value);
-console.log(myStack.peek().value);
-console.log();    
+myStack.pop();
+console.log();
+// myStack.push("Youtube");
+// myStack.push("Google");
+// console.log(myStack.isEmpty());
+// console.log(myStack.peek().value);
+// console.log(myStack.pop().value);
+// console.log(myStack.peek().value);
+// console.log(myStack.pop().value);
+// console.log(myStack.pop().value);
+// console.log(myStack.pop().value);
+// console.log();    
