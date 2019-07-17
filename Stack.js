@@ -32,18 +32,24 @@ class Stack {
         if (this.length > 0) {
             var nodeToReturn = new Node(this.top.value);
             this.top = this.top.next;
+            this.length--;
+            return nodeToReturn;
         }
+        return null;
     }
     isEmpty() {
-
+        if (this.length == 0) return true;
+        return false;
     }
 }
 
 const myStack = new Stack();
+console.log(myStack.isEmpty());
 myStack.push("Udemy");
 myStack.push("Youtube");
 myStack.push("Google");
+console.log(myStack.isEmpty());
 console.log(myStack.peek().value);
-myStack.pop();
+console.log(myStack.pop().value);
 console.log(myStack.peek().value);
 console.log();    
