@@ -5,7 +5,7 @@ class Node {
     }
 }
 
-class Stack {
+class Stack_LinkedList {
     constructor() {
         this.top = null;
         this.bottom = null;
@@ -32,13 +32,12 @@ class Stack {
             var nodeToReturn = new Node(this.top.value);
             this.top = this.top.next;
             this.length--;
-            
-        }else
-        {
+
+        } else {
             return null;
         }
-        
-        if(this.length === 0){
+
+        if (this.length === 0) {
             this.bottom = null;
         }
         return nodeToReturn;
@@ -48,11 +47,33 @@ class Stack {
         return false;
     }
 }
+class Stack_Array {
+    constructor() {
+        this.data = [];
+    }
+    peek() {
+        return this.data[this.data.length - 1];
+    }
+    push(value) {
+        this.data.push(value);
+        return this;
+    }
+    pop() {
+        if (this.data.length < 0) return;
+        var rc = this.data.pop();
 
-const myStack = new Stack();
+    }
+    isEmpty() {
+        if (this.data.length == 0) return true;
+        return false;
+    }
+}
+
+const myStack = new Stack_LinkedList();
 // console.log(myStack.isEmpty());
 myStack.push("Udemy");
-myStack.pop();
+console.log(myStack.peek());
+//myStack.pop();
 console.log();
 // myStack.push("Youtube");
 // myStack.push("Google");
