@@ -27,7 +27,11 @@ class Queue{
         this.length++;
     }
     dequeue(){
-      
+        if(this.length < 1) return;
+        var nodeToReturn = this.first;
+        this.first = this.first.next;
+this.length--;
+        return nodeToReturn;
     }
     isEmpty(){
 
