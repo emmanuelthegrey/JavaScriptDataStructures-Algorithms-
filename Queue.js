@@ -13,7 +13,7 @@ class Queue{
         this.length = 0;
     }
     peek(){
-
+return this.first;
     }
     enqueue(value){
         let newNode = new Node(value);
