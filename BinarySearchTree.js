@@ -11,33 +11,30 @@ class BinarySearchTree {
         this.root = null;
     }
     insert(value) {
-        let newNode = new Node(value);
-        if (!this.root) {
-            this.root = newNode;
-        } else {
+        const newNode = new Node(value);
+        if (this.root === null) this.root = newNode;
+        else {
             let currentNode = this.root;
+
             while (true) {
-                if(newNode.value >= currentNode.value){
-                    //GO TO THE RIGHT
-                    if(!currentNode.right){
-                        currentNode.right = newNode;
-                        return this;
-                    }else{
-                        currentNode = currentNode.right;
-                    }
-                }else if(newNode.value < currentNode.value){
-                    //Go Left the
-                    if(!currentNode.left){
+                if (value < currentNode.value) {
+                    if (!currentNode.left) {
                         currentNode.left = newNode;
                         return this;
-                    }else{
-                        currentNode = currentNode.left;
                     }
+                    currentNode = currentNode.left
+                }
+                else {
+                    if (!currentNode.right) {
+                        currentNode.right = newNode;
+                        return this;
+                    }
+                    currentNode = currentNode.right
                 }
             }
-
         }
     }
+
 
     lookup(value) {
         let currentNode = this.root
@@ -64,23 +61,54 @@ class BinarySearchTree {
         }
     }
     remove(value) {
+        if(!this.root) return null;
+        let currentNode = this.root;
+        let parentNode = null;
 
+        while(currentNode){
+            if(value < currentNode.value){
+                parentNode = currentNode;
+                currentNode = currentNode.left;
+            }else if(value > currentNode.value){
+                parentNode = currentNode;
+                currentNode = currentNode.right;
+            }else if (currentNode.value === value){
+
+                if(currentNode.right === null){
+                   if(parentNode === null){
+                       this.root = currentNode.left
+                   }else{
+                       if(currentNode.value < parentNode.value){
+                           parentNode.left = currentNode.left;
+                       }else if(currentNode.value > parentNode.value){
+                           parentNode.right = currentNode.left;
+                       }
+                   }
+                }else if(currentNode.right.left === null){
+                    if(parentNode === null)
+                    parentNode.right = currentNode.right;
+                }
+            }
+        }
     }
 }
+
+const tree = new BinarySearchTree();
+tree.insert(9);
+tree.insert(4);
+tree.insert(6);
+
+tree.insert(20);
+tree.insert(170);
+tree.insert(15);
+tree.insert(1);
+
+console.log("Lookup return = " + JSON.stringify(traverse(tree.lookup(20))));
+console.log(JSON.stringify(traverse(tree.root)));
 
 function traverse(node) {
     const tree = { value: node.value };
     tree.left = node.left === null ? null : traverse(node.left);
     tree.right = node.right === null ? null : traverse(node.right);
     return tree;
-  }
-
-let bt = new BinarySearchTree();
-bt.insert(12);
-bt.insert(6);
-bt.insert(23);
-bt.insert(9);
-bt.insert(10);
-bt.insert(17);
-
-console.log(bt.lookup(17));
+}
